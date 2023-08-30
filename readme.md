@@ -11,7 +11,12 @@ pip install pipenv
 pipenv shell
 pipenv install
 ```
-## 3) Ejecutando el programa
+## 3) Descargar el Modelo SpaCy en español
+Se debe descargar específicamente este modelo, ya que con este se puede procesar palabras en español, procesamiento de lenguaje natural (NLP):
+```sh
+pipenv run python -m spacy download es_core_news_md
+```
+## 4) Ejecutando el programa
 ```sh
 python main.py
 ```

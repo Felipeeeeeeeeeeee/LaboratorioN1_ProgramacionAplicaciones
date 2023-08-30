@@ -48,5 +48,3 @@ def delete_form(form_id):
     db.session.delete(form)
     db.session.commit()
     return redirect(url_for('index.show_forms'))
-
-

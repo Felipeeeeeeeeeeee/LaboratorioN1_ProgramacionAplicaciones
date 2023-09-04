@@ -2,7 +2,6 @@
 
 ## Integrantes
 - Simón Henriquez Lind
-- Hugo Ignacio Concha
 - Felipe Mancilla Yañez
 
 ## 1) Clonar el Repositorio

@@ -1,0 +1,50 @@
+{% extends "layouts/main_nav.html" %}
+
+{% block title %}Palabras - ChatCSD{% endblock %}
+
+{% block content %}
+    <h1 class="text-2xl font-semibold mb-4">Palabras y Recuentos</h1>
+    <div class="container mx-auto p-6">
+        {% if words_pagination.items %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Palabra</th>
+                        <th>Recuento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for word in words_pagination.items %}
+                        <tr>
+                            <td>{{ word.id.capitalize() }}</td>
+                            <td>{{ word.count }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="mt-4">
+                <nav aria-label="Paginación">
+                    <ul class="pagination">
+                        {% if words_pagination.has_prev %}
+                            <li class="page-item"><a class="page-link" href="{{ url_for('index.show_words', page=words_pagination.prev_num) }}">Anterior</a></li>
+                        {% endif %}
+                        {% for num in words_pagination.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                            {% if num %}
+                                <li class="page-item {% if words_pagination.page == num %}active{% endif %}">
+                                    <a class="page-link" href="{{ url_for('index.show_words', page=num) }}">{{ num }}</a>
+                                </li>
+                            {% else %}
+                                <li class="page-item disabled"><span class="page-link">...</span></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if words_pagination.has_next %}
+                            <li class="page-item"><a class="page-link" href="{{ url_for('index.show_words', page=words_pagination.next_num) }}">Siguiente</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        {% else %}
+            <p>No hay palabras almacenadas en la base de datos.</p>
+        {% endif %}
+    </div>
+{% endblock %}

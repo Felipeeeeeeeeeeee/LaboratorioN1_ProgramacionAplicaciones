@@ -7,8 +7,9 @@ name = "pypi"
 flask = "*"
 sqlalchemy = "*"
 flask-sqlalchemy = "*"
-nltk = "*"
 spacy = "*"
+pytz = "*"
+unidecode = "*"
 
 [dev-packages]
 

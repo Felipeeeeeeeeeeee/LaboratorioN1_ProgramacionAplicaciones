@@ -1,0 +1,45 @@
+{% extends "layouts/main_nav.html" %}
+
+{% block title %}Formularios - ChatCSD{% endblock %}
+
+{% block content %}
+    <h1 class="text-2xl font-semibold mb-4">Chat Prompts Guardados</h1>
+    <div class="container mx-auto p-6">
+        {% if prompts.items %}
+            <ul class="list-group">
+                {% for form in prompts.items %}
+                    <li class="list-group-item mb-2">
+                        <span>{{ form.content }}</span>
+                        <div class="float-right">
+                            <a href="{{ url_for('index.details_of_prompt', form_id=form.id) }}" class="btn btn-outline-primary btn-sm mr-2">Detalles</a>
+                            <a href="{{ url_for('index.delete_prompt', form_id=form.id) }}" class="btn btn-outline-danger btn-sm">Eliminar</a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="mt-4">
+                <nav aria-label="Pagination">
+                    <ul class="pagination">
+                        {% if prompts.has_prev %}
+                            <li class="page-item"><a class="page-link" href="{{ url_for('index.show_prompts', page=prompts.prev_num) }}">Anterior</a></li>
+                        {% endif %}
+                        {% for num in prompts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                            {% if num %}
+                                <li class="page-item {% if prompts.page == num %}active{% endif %}">
+                                    <a class="page-link" href="{{ url_for('index.show_prompts', page=num) }}">{{ num }}</a>
+                                </li>
+                            {% else %}
+                                <li class="page-item disabled"><span class="page-link">...</span></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if prompts.has_next %}
+                            <li class="page-item"><a class="page-link" href="{{ url_for('index.show_prompts', page=prompts.next_num) }}">Siguiente</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        {% else %}
+            <p>No hay formularios guardados.</p>
+        {% endif %}
+    </div>
+{% endblock %}

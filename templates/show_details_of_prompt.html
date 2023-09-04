@@ -1,10 +1,15 @@
 {% extends "layouts/main_nav.html" %}
 
-{% block title %}Detalles del Formulario - ChatCSD{% endblock %}
+{% block title %}Detalles del Prompt - ChatCSD{% endblock %}
 
 {% block content %}
-    <div class="container mx-auto p-6">
-        <h1 class="text-2xl font-semibold mb-4">Detalles del Formulario</h1>
+    <div class="container mx-auto p-8">
+        <h1 class="text-2xl font-semibold mb-4">Detalles del Prompt</h1>
+        <div class="bg-gray-100 p-4 rounded-lg shadow-lg">
+            <h2 class="text-lg font-semibold mb-2">Fecha de subida:</h2>
+            <p>{{ timestamp }}</p>
+        </div>
+        <br>
         <div class="bg-gray-100 p-4 rounded-lg shadow-lg">
             <h2 class="text-lg font-semibold mb-2">Sustantivos:</h2>
             <p>Cantidad de sustantivos: {{ num_nouns }}</p>
@@ -33,7 +38,7 @@
             <p class="text-blue-500">Azul: Sustantivo</p>
             <p>Negro: Otras palabras</p>
         </div>
-        <a href="{{ url_for('index.show_forms') }}" class="mt-4 inline-flex items-center text-blue-500 hover:underline">
+        <a href="{{ url_for('index.show_prompts') }}" class="mt-4 inline-flex items-center text-blue-500 hover:underline">
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
             </svg>

@@ -3,6 +3,9 @@
 {% block title %}Inicio - ChatCSD{% endblock %}
 
 {% block content %}
+    <div class="success-message alert alert-success mt-4" style="display: none;">
+        El formulario se ha enviado con éxito.
+    </div>
     <h1 class="text-2xl font-semibold mb-4">Bienvenido al Home</h1>
     <!-- Contenido específico de la vista de inicio -->
     <div class="container mx-auto p-6">
@@ -24,11 +27,36 @@
     <script>
         const textarea = document.getElementById('content');
         const charCount = document.getElementById('char-count');
-    
+        
         textarea.addEventListener('input', function() {
             const currentLength = textarea.value.length;
             charCount.textContent = `${currentLength} / 100 caracteres`;
         });
+    
+        // Obtiene el elemento del mensaje de éxito
+        const successMessage = document.querySelector('.success-message');
+    
+        // Oculta el mensaje de éxito al principio
+        successMessage.style.display = 'none';
+    
+        // Agrega una verificación para el campo vacío al enviar el formulario
+        const form = document.querySelector('form');
+    
+        form.addEventListener('submit', function(event) {
+            if (textarea.value.trim() === '') {
+                event.preventDefault(); // Evita que el formulario se envíe
+                alert('El campo de contenido no puede estar vacío.');
+            } else {
+                // Muestra el mensaje de éxito
+                successMessage.style.display = 'block';
+    
+                // Establece un temporizador para ocultar el mensaje después de 4 segundos
+                setTimeout(function () {
+                    successMessage.style.display = 'none';
+                }, 4000);  // 4000 milisegundos (4 segundos)
+            }
+        });
     </script>
+    
     
 {% endblock %}

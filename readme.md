@@ -1,5 +1,10 @@
 # Lab N°1 Programación de aplicaciones
 
+## Integrantes
+- Simón Henriquez Lind
+- Hugo Ignacio Concha
+- Felipe Mancilla Yañez
+
 ## 1) Clonar el Repositorio
 ```sh
 git clone https://github.com/Felipeeeeeeeeeeee/LaboratorioN1_ProgramacionAplicaciones.git
